@@ -3,10 +3,12 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from functools import wraps
 
+from extensions import db
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///appointments.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
+db.init_app(app)
 
 from models import Appointment
 
